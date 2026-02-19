@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="layout-top">
+
+    <nav>
+        <a href="/">🏠 Início</a>
+        <a href="/fornecedores">🏭 Fornecedores</a>
+        <a href="/financeiro">💰 Financeiro</a>
+        <a href="/sensores">📡 Sensores</a>
+        <a href="/temperatura">🌡️ Temperatura</a>
+        <a href="/resistencia">⚡ Resistência</a>
+        <div class="nav-controls">
+            <button onclick="toggleTheme()" id="btn-theme" title="Alternar tema">🌙</button>
+            <button onclick="toggleLayout()" id="btn-layout" title="Alternar navegação">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <div class="container">
+            <div class="form-card">
+                <h1>📡 Sensores Industriais</h1>
+                <form method="POST">
+                    <div class="form-group">
+                        <label>Valor Decimal (0–255)</label>
+                        <input type="number" name="valor" min="0" max="255" required>
+                    </div>
+                    <button type="submit">Converter para Binário</button>
+                </form>
+                {% if resultado is not none %}
+                <div class="resultado">
+                    <strong>Representação Binária (8 bits):</strong><br>
+                    <span style="font-size:1.5rem; letter-spacing: 4px;">{{ resultado }}</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

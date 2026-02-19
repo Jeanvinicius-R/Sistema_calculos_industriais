@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperatura</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="layout-top">
+
+    <nav>
+        <a href="/">🏠 Início</a>
+        <a href="/fornecedores">🏭 Fornecedores</a>
+        <a href="/financeiro">💰 Financeiro</a>
+        <a href="/sensores">📡 Sensores</a>
+        <a href="/temperatura">🌡️ Temperatura</a>
+        <a href="/resistencia">⚡ Resistência</a>
+        <div class="nav-controls">
+            <button onclick="toggleTheme()" id="btn-theme" title="Alternar tema">🌙</button>
+            <button onclick="toggleLayout()" id="btn-layout" title="Alternar navegação">☰</button>
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <div class="container">
+            <div class="form-card">
+                <h1>🌡️ Conversão de Temperatura</h1>
+                <form method="POST">
+                    <div class="form-group">
+                        <label>Valor</label>
+                        <input type="number" name="valor" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Conversão</label>
+                        <select name="conversao">
+                            <option value="C_F">Celsius → Fahrenheit</option>
+                            <option value="C_K">Celsius → Kelvin</option>
+                            <option value="F_C">Fahrenheit → Celsius</option>
+                            <option value="K_C">Kelvin → Celsius</option>
+                        </select>
+                    </div>
+                    <button type="submit">Converter</button>
+                </form>
+                {% if resultado is not none %}
+                <div class="resultado">
+                    <strong>Resultado:</strong> {{ resultado }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

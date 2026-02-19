@@ -1,0 +1,342 @@
+/* ===== VARIÁVEIS DE TEMA ===== */
+:root {
+    --bg: #f0f2f5;
+    --bg-card: #ffffff;
+    --bg-nav: #2c3e50;
+    --bg-nav-hover: #3d5166;
+    --text: #2c3e50;
+    --text-muted: #666;
+    --shadow: rgba(0,0,0,0.1);
+    --shadow-hover: rgba(0,0,0,0.15);
+    --input-bg: #fff;
+    --input-border: #ccc;
+    --result-bg: #eaf4ff;
+    --result-border: #3498db;
+    --result-text: #1a5276;
+    --alerta-bg: #fff3cd;
+    --alerta-border: #f0ad4e;
+    --alerta-text: #856404;
+    --btn-bg: #2c3e50;
+    --btn-hover: #3d5166;
+}
+
+[data-theme="dark"] {
+    --bg: #1a1a2e;
+    --bg-card: #16213e;
+    --bg-nav: #0f3460;
+    --bg-nav-hover: #1a4a7a;
+    --text: #e0e0e0;
+    --text-muted: #aaa;
+    --shadow: rgba(0,0,0,0.4);
+    --shadow-hover: rgba(0,0,0,0.6);
+    --input-bg: #0f3460;
+    --input-border: #444;
+    --result-bg: #0f3460;
+    --result-border: #3498db;
+    --result-text: #7ec8e3;
+    --alerta-bg: #3a2f00;
+    --alerta-border: #f0ad4e;
+    --alerta-text: #ffd87a;
+    --btn-bg: #0f3460;
+    --btn-hover: #1a4a7a;
+}
+
+/* ===== RESET ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+}
+
+/* ===== LAYOUT LATERAL ===== */
+body.layout-side {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+body.layout-side nav {
+    flex-direction: column;
+    width: 220px;
+    min-height: 100vh;
+    padding: 20px 15px;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+body.layout-side .page-content {
+    flex: 1;
+    padding: 40px;
+}
+
+body.layout-top .page-content {
+    padding: 40px;
+}
+
+/* ===== NAV ===== */
+nav {
+    background-color: var(--bg-nav);
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    background-color: var(--bg-nav-hover);
+}
+
+.nav-controls {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.nav-controls button {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.nav-controls button:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* ===== CONTROLES DO TOPO DA NAV ===== */
+.nav-controls {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+body.layout-side .nav-controls {
+    margin-left: 0;
+    margin-top: auto;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nav-controls {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.nav-controls button {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.nav-controls button:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* ===== CONTAINER GERAL ===== */
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.container.home { max-width: 900px; }
+
+h1 {
+    font-size: 2rem;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+/* ===== CARDS HOME ===== */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-decoration: none;
+    color: var(--text);
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px var(--shadow-hover);
+}
+
+.card .icon { font-size: 2.5rem; margin-bottom: 15px; }
+.card h2 { font-size: 1rem; }
+
+/* ===== FORMULÁRIOS ===== */
+.form-card {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 35px;
+    box-shadow: 0 2px 8px var(--shadow);
+    text-align: left;
+}
+
+.form-card h1 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 15px;
+    background: var(--input-bg);
+    color: var(--text);
+    transition: border 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: var(--btn-bg);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 8px;
+}
+
+button[type="submit"]:hover {
+    background: var(--btn-hover);
+}
+
+/* ===== RESULTADO ===== */
+.resultado {
+    margin-top: 25px;
+    padding: 20px;
+    background: var(--result-bg);
+    border-left: 5px solid var(--result-border);
+    border-radius: 6px;
+    color: var(--result-text);
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.alerta {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: var(--alerta-bg);
+    border-left: 5px solid var(--alerta-border);
+    border-radius: 6px;
+    color: var(--alerta-text);
+    font-size: 14px;
+}
+
+/* ===== RESPONSIVO MOBILE ===== */
+@media (max-width: 600px) {
+    nav {
+        padding: 10px 15px;
+        gap: 4px;
+    }
+
+    nav a {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    .nav-controls {
+        margin-left: auto;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    .page-content {
+        padding: 20px 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    nav a span.nav-text {
+        display: none;
+    }
+
+    nav a {
+        font-size: 18px;
+        padding: 6px;
+    }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fornecedores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="layout-top">
+
+    <nav>
+    <a href="/">🏠 <span class="nav-text">Início</span></a>
+    <a href="/fornecedores">🏭 <span class="nav-text">Fornecedores</span></a>
+    <a href="/financeiro">💰 <span class="nav-text">Financeiro</span></a>
+    <a href="/sensores">📡 <span class="nav-text">Sensores</span></a>
+    <a href="/temperatura">🌡️ <span class="nav-text">Temperatura</span></a>
+    <a href="/resistencia">⚡ <span class="nav-text">Resistência</span></a>
+    <div class="nav-controls">
+        <button onclick="toggleTheme()" id="btn-theme" title="Alternar tema">🌙</button>
+        <button onclick="toggleLayout()" id="btn-layout" title="Alternar navegação">☰</button>
+    </div>
+</nav>
+
+    <div class="page-content">
+        <div class="container">
+            <div class="form-card">
+                <h1>🏭 Avaliação de Fornecedores</h1>
+                <form method="POST">
+                    <div class="form-group">
+                        <label>Nota Preço (0–10) — Peso 40%</label>
+                        <input type="number" name="preco" min="0" max="10" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nota Qualidade (0–10) — Peso 35%</label>
+                        <input type="number" name="qualidade" min="0" max="10" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nota Entrega (0–10) — Peso 25%</label>
+                        <input type="number" name="entrega" min="0" max="10" step="0.1" required>
+                    </div>
+                    <button type="submit">Calcular Média Ponderada</button>
+                </form>
+                {% if resultado is not none %}
+                <div class="resultado">
+                    <strong>Média Ponderada:</strong> {{ resultado }} / 10
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
